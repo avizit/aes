@@ -66,6 +66,11 @@ Byte Byte::operator^(const Byte other){
     return Byte (_byte ^ other._byte ); 
 }
 
+bool Byte::operator==(const Byte other) const{
+    return(_byte == other._byte);
+    //
+}
+
 
 
 ostream &operator<<(ostream &out, Byte b) {
@@ -75,19 +80,18 @@ ostream &operator<<(ostream &out, Byte b) {
 
 
 vector<Byte> str2bytevec(string str){
+    
     assert(str.length() % 2 == 0 ) ; //only even length accepted
 
-    std::cerr<<"input :" <<str<<" input length : "<<str.length()<<endl;
     vector<Byte> res;
     
     for(string::iterator it = str.begin(); it != str.end(); it += 2){
-	char temp[2] ;
-	copy(it,it+2, temp);
-	cerr<<"temp after copy :"<<temp<<endl;
-	string t(temp);
-	std::cerr<<"t.length() :" <<t.length()<<endl;
-	assert(t.length() == 2);
-	res.push_back(Byte(t));
+      
+        char temp[3];
+        temp[2] = '\0';
+
+        copy(it,it+2, temp);
+        res.push_back(Byte(string(temp)));
     }
     return res;
     
