@@ -40,6 +40,33 @@ namespace {
         
         EXPECT_EQ(v , str2bytevec(str));
     }
+
+
+    class AESTest : public ::testing::Test{
+    protected:
+        AESTest(){
+        }
+
+        virtual ~AESTest(){}
+
+        virtual void SetUp(){
+        
+       
+           
+        }
+        virtual void TearDown() {
+            // Code here will be called immediately after each test (right
+            // before the destructor).
+        }
+
+        // Objects declared here can be used by all tests in the test case for Foo.
+    };
+
+    
+    TEST_F(AESTest, ConstTest){
+        EXPECT_EQ(2,2);
+    }
+
     
 }
 
