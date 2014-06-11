@@ -62,7 +62,7 @@ void AES::setKey(std::vector<Byte> inkey){
 
 
 void AES::setKey(std::string inkey){
-    //    key = str2bytevec(inkey);
+    key = str2bytevec(inkey);
 }
 
 
@@ -124,10 +124,12 @@ void AES::mixColumns(const Byte in[4], Byte* res) const{
 }
 
 
-void AES::keyExpansion(Byte *key, Word32 *res){
+vector<Word32>  AES::keyExpansion(const vector<Byte> key) const{
     Word32 temp;
+    vector<Word32> res;
+
     for(unsigned i = 0; i < 4; i++){
-        res[i] = Word32(key[4*i], key[4*i +1], key[4*i +2], key[4*i+3]);
+        res.push_back(Word32(key[4*i], key[4*i +1], key[4*i +2], key[4*i+3]));
     }
 
     for(unsigned i = 4 ; i < 44 ; i++){
@@ -135,8 +137,8 @@ void AES::keyExpansion(Byte *key, Word32 *res){
         if( i % 4 == 0 ){
             temp = subWord32(rotWord32(temp))  ^  Word32( RCon[i/4], Byte(0), Byte(0), Byte(0)); 
         }
-        res[i] = res[i-4] ^ temp;
+        res.push_back( res[i-4] ^ temp );
             
     }
-    return;
+    return res;
 }

@@ -23,7 +23,7 @@ class AES {
     void  mixColumns(const Byte in[4], Byte* res) const;
 
   
-    void keyExpansion(Byte *key, Word32 *res); //valid for 128 bit
+    vector<Word32>  keyExpansion(const vector<Byte> key) const; 
     
     
   
