@@ -5,6 +5,14 @@
 
 #include <vector>
 
+struct InterType{
+    bool interCal; // is it an intermediate data calculation
+    unsigned round;
+    enum{ AFT_SUBBYTES, AFT_SHIFTROWS, AFT_MIXCOLS, AFT_ADDKEY} stage;
+};
+
+
+
 class AES {
  public:
     AES();
@@ -13,9 +21,16 @@ class AES {
     vector<Byte> getKey() const;
     void setKey(std::vector<Byte> inkey);
     void setKey(std::string inkey);
+
+    vector<Byte> getInput() const;
+    void setInput(vector<Byte> in) ;
+    void setInput(string inStr);
+ 
+    
     vector<Word32>  expandKey() const; 
     vector<Word32>  expandKey(const vector<Byte> key) const; 
   
+    void encrypTo(InterType t, Byte* output); //encrpyt only upto a point if intermediate data is required
   
  private:
     Byte subByte(const Byte in) const;
@@ -31,8 +46,10 @@ class AES {
     Byte state[4][4];
   
     std::vector<Byte> key;
+    std::vector<Byte> input;
 
     static Byte RCon[256];
+    
     
 
 };

@@ -76,6 +76,23 @@ void AES::setKey(string inkey){
 }
 
 
+vector<Byte> AES::getInput() const{
+    return input;
+}
+
+void AES::setInput(std::vector<Byte> in){
+    input = in;
+}
+
+
+void AES::setInput(string inStr){
+
+    inStr.erase(remove_if(inStr.begin(), inStr.end(), ::isspace), inStr .end()); //remove spaces 
+
+    input = str2bytevec(inStr);
+}
+
+
 
 Byte AES::subByte(const Byte in) const{
     unsigned i = in.mSNibble().asUint();
@@ -154,4 +171,12 @@ vector<Word32>  AES::expandKey(const vector<Byte> key) const{
             
     }
     return res;
+}
+
+
+
+void AES::encrypt(InterType t, Byte* output){
+    
+    
+    return;
 }
