@@ -31,6 +31,7 @@ class Byte {
     Byte operator^(const Byte other);
 
     bool operator==(const Byte other) const;
+    bool operator!=(const Byte other) const;
 
     friend ostream &operator<<(ostream &out, Byte  b);     //output
     friend vector<Byte> str2bytevec(string str); //convert string to byte vector

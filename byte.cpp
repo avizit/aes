@@ -72,6 +72,12 @@ bool Byte::operator==(const Byte other) const{
 }
 
 
+bool Byte::operator!=(const Byte other) const{
+    return(! (_byte == other._byte));
+    //
+}
+
+
 
 ostream &operator<<(ostream &out, Byte b) {
      out<<hex<<std::setfill('0') << std::setw(2)<<b._byte;

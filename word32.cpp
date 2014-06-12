@@ -1,4 +1,6 @@
 #include <cassert>
+#include <iomanip>
+
 #include "word32.h"
 
 
@@ -67,3 +69,24 @@ Word32 Word32::operator^(const Word32 other){
     }
     return( Word32 ( res[0], res[1] , res[2], res[3]));
 }   
+
+
+bool Word32::operator==(const Word32 other)const{
+   
+    for(unsigned i = 0; i < 4; i++){
+	if(_word32[i] != other._word32[i])
+	    return false;
+    }
+    return true;
+}   
+
+bool Word32::operator!=(const Word32 other)const{
+    return(!( *this  == other ));
+}   
+
+
+
+ostream &operator<<(ostream &out, Word32  w){
+    out<<hex<<std::setfill('0') << std::setw(2)<<w._word32[0]<<w._word32[1]<<w._word32[2]<<w._word32[3];
+    return out;
+}

@@ -19,6 +19,8 @@ class Word32 {
     Word32 operator&(const Word32 other);
     Word32 operator|(const Word32 other);
     Word32 operator^(const Word32 other);
+    bool operator==(const Word32 other) const;
+    bool operator!=(const Word32 other) const;
 
     friend ostream &operator<<(ostream &out, Word32  w); 
 

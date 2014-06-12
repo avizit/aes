@@ -1,6 +1,9 @@
-#include "aes.h"
+#include <algorithm>
 #include <string>
+#include <cctype>
 
+
+#include "aes.h"
 AES::AES(){}
 
 AES::~AES(){}
@@ -56,12 +59,19 @@ Byte AES::RCon[256]  = {
 
 
 
+vector<Byte> AES::getKey() const{
+    return key;
+}
+
 void AES::setKey(std::vector<Byte> inkey){
     key = inkey;
 }
 
 
-void AES::setKey(std::string inkey){
+void AES::setKey(string inkey){
+
+    inkey.erase(remove_if(inkey.begin(), inkey.end(), ::isspace), inkey .end()); //remove spaces 
+
     key = str2bytevec(inkey);
 }
 
@@ -96,7 +106,7 @@ void  AES::shiftRows(const Byte in[4][4], Byte** res) const{
 
   for(unsigned i = 0; i < 4 ; i++){
     unsigned j = (i + 1 ) % 4;
-    res[1][i] = in[1][j];
+    res[1][i] != in[1][j];
   }
 
   for(unsigned i = 0; i < 4 ; i++){
@@ -123,8 +133,11 @@ void AES::mixColumns(const Byte in[4], Byte* res) const{
   return;
 }
 
+vector<Word32> AES::expandKey() const{
+    return (expandKey(key));
+}
 
-vector<Word32>  AES::keyExpansion(const vector<Byte> key) const{
+vector<Word32>  AES::expandKey(const vector<Byte> key) const{
     Word32 temp;
     vector<Word32> res;
 

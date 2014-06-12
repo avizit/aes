@@ -10,7 +10,6 @@ main : main.o aes.o byte.o word32.o
 	${CXX}  -I ${INCLUDE_DIR}  -o main main.cpp aes.o byte.o word32.o  -L ${LIB_DIR}  libgtest.a -pthread
 
 
-
 .cpp.o:
 	$(CXX)  -I ${INCLUDE_DIR} $(CFLAGS)  -c -o $@ $< 
 

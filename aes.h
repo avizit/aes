@@ -10,8 +10,11 @@ class AES {
     AES();
     ~AES();
 
+    vector<Byte> getKey() const;
     void setKey(std::vector<Byte> inkey);
     void setKey(std::string inkey);
+    vector<Word32>  expandKey() const; 
+    vector<Word32>  expandKey(const vector<Byte> key) const; 
   
   
  private:
@@ -22,10 +25,6 @@ class AES {
     void  shiftRows(const Byte  in[4][4], Byte** res) const;
     void  mixColumns(const Byte in[4], Byte* res) const;
 
-  
-    vector<Word32>  keyExpansion(const vector<Byte> key) const; 
-    
-    
   
     static Byte SBox[16][16] ;
     static Byte C[4][4];
