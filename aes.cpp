@@ -175,7 +175,7 @@ vector<Word32>  AES::expandKey(const vector<Byte> key) const{
 
 
 
-void AES::encrypt(InterType t, Byte* output){
+void AES::encryptTo(InterType t, Byte* output){
     
     
     return;

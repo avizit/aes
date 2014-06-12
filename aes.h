@@ -30,7 +30,7 @@ class AES {
     vector<Word32>  expandKey() const; 
     vector<Word32>  expandKey(const vector<Byte> key) const; 
   
-    void encrypTo(InterType t, Byte* output); //encrpyt only upto a point if intermediate data is required
+    void encryptTo(InterType t, Byte* output); //encrpyt only upto a point if intermediate data is required
   
  private:
     Byte subByte(const Byte in) const;
